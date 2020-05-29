@@ -267,8 +267,13 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
+  let carByIndex = inventory[index];
+  return `This is a ${carByIndex.car_make} ${carByIndex.car_model} `;
+  
   /* code here */
 }
+
+console.log(getCarInfoByIndex(inventory, 4));
 
 /**
  * ### Challenge `getLastCarInfo`
@@ -281,9 +286,14 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
-}
+function getLastCarInfo(filePath) {
+  let inventoryObject = require(filePath);
+  let lastInventoryObject = inventoryObject[inventoryObject.length-1];
+  return `This is a ${lastInventoryObject.car_make} ${lastInventoryObject.car_model}`;
+    /* code here */
+  }
+  
+  console.log(getLastCarInfo('./data/inventory.js'));
 
 /**
  * ### Challenge `getModelYears`
@@ -294,9 +304,18 @@ function getLastCarInfo(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
+function getModelYears(filePath) {
+
+  let carYears = [];
+  let inventoryObject = require(filePath);
+  for(i=0;i<inventoryObject.length;i++) {
+    carYears.push(inventoryObject[i].car_year)
+  }
+  return carYears;
   /* code here */
 }
+
+console.log(getModelYears('./data/inventory.js'));
 
 
 // STRETCH GOALS BELOW 👇👇👇👇👇👇👇👇
